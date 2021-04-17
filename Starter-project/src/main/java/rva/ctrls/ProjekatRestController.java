@@ -47,7 +47,7 @@ public class ProjekatRestController {
 	@GetMapping("projekatNaziv/{naziv}")
 	@ApiOperation(value = "Vraća kolekciju svih projekata iz baze podataka koji u nazivu sadrže string prosleđen kao path varijabla")
 	public Collection<Projekat> getProjekatByNaziv(@PathVariable("naziv") String naziv){
-		return projekatRepository.findByNazivContainingIgnoreCae(naziv);
+		return projekatRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
 	@PostMapping("projekat")
@@ -60,7 +60,7 @@ public class ProjekatRestController {
 		return new ResponseEntity<Projekat>(HttpStatus.CONFLICT);
 	}
 	
-	@PutMapping("projekat/{id}")
+	@PutMapping("projekat")
 	@ApiOperation(value = "Modifikuje postojeći projekat u bazi podataka čiji je id vrednost prosleđena kao path varijabla")
 	public ResponseEntity<Projekat> updateProjekat(@RequestBody Projekat projekat) {
 		if(!projekatRepository.existsById(projekat.getId())) {
@@ -81,7 +81,7 @@ public class ProjekatRestController {
 		projekatRepository.deleteById(id);
 		if(id == -100) {
 			jdbcTemplate.execute(
-					"INSERT INTO \"projekat\"(\"id\",\"naziv\",\"oznaka\",\"opis\")"
+					"INSERT INTO \"projekat\"(\"id\", \"naziv\", \"oznaka\", \"opis\") "
 					+ "VALUES(-100, 'Naziv Test', 'Test Oznaka', 'Test Opis)"
 					);
 		}

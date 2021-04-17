@@ -61,7 +61,7 @@ public class SmerRestController {
 		return new ResponseEntity<Smer>(HttpStatus.CONFLICT);
 	}
 	
-	@PutMapping("smer/{id}")
+	@PutMapping("smer")
 	@ApiOperation(value = "Modifikuje postojeći smer u bazi podataka")
 	public ResponseEntity<Smer> updateSmer(@RequestBody Smer smer){
 		if(!smerRepository.existsById(smer.getId())) {

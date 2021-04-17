@@ -57,7 +57,7 @@ public class StudentRestController {
 	@GetMapping("studentIndex/{brIndx}")
 	@ApiOperation(value = "Vraća kolekciju svih studenata iz baze podataka koji u broju indeksa sadrže string prosleđen kao path varijabla")
 	public Collection<Student> studentiIndx(@PathVariable("brIndx") String brIndx) {
-		return studentRepository.findByBrIndxContainingIgnoreCase(brIndx);
+		return studentRepository.findByBrojIndeksaContainingIgnoreCase(brIndx);
 	}
 	
 	@GetMapping("studentGrupa/{id}")
@@ -84,7 +84,7 @@ public class StudentRestController {
 		return new ResponseEntity<Student>(HttpStatus.CONFLICT);
 	}
 	
-	@PutMapping("student/{id}")
+	@PutMapping("student")
 	@ApiOperation(value = "Modifikuje postojećeg studenata u bazi podataka čiji je id vrednost prosleđena kao path varijabla")
 	public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
 		if(!studentRepository.existsById(student.getId())) {

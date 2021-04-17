@@ -8,6 +8,6 @@ import rva.jpa.Projekat;
 
 public interface ProjekatRepository extends JpaRepository<Projekat, Integer>{
 
-	Collection<Projekat> findByNazivContainingIgnoreCae(String naziv);
+	Collection<Projekat> findByNazivContainingIgnoreCase(String naziv);
 	
 }

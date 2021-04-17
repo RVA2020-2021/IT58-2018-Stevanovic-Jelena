@@ -74,7 +74,7 @@ public class GrupaRestController {
 		return new ResponseEntity<Grupa>(HttpStatus.CONFLICT);
 	}
 	
-	@PutMapping("grupa/{id}")
+	@PutMapping("grupa")
 	@ApiOperation(value = "Modifikuje postojeću grupu u bazi podataka čija je id vrednost prosleđena kao path varijabla")
 	public ResponseEntity<Grupa> updateGrupa(@RequestBody Grupa grupa) {
 		if(!grupaRepository.existsById(grupa.getId())) {
